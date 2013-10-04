@@ -1,0 +1,11 @@
+{{searchable}}
+
+{% if results %}
+    <ul>
+    {% for account in results %}
+        <li><a href="/addressbook/{{ account.id }}/">{{ account.last_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No accounts are available.</p>
+{% endif %}

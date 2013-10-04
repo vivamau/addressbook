@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+ <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+ <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static "addressbook/css/" %}base.css" />
+    <link rel="stylesheet" type="text/css" href="{% static "addressbook/css/" %}amazium.css" />
+    <link rel="stylesheet" type="text/css" href="{% static "addressbook/css/" %}addressbook.css" />
+
+    <title>{% block title %}This is an address book{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+</head>
+
+<body>
+    <nav>
+    </nav>
+	<header>
+
+	</header>
+    {% block search %}{% endblock %}
+    {% block content %}{% endblock %}
+</body>
+</html>

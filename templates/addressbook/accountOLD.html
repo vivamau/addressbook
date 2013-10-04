@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}
+	{{ account.last_name }}
+{% endblock %}
+{% block content %}
+{% load staticfiles %}
+{% if account %}
+		<div class="row">
+			<div class="grid_2">
+				<img src="{{account.picture.url }}" alt="{{ account.first_name }} {{ account.last_name }} picture" width="94%" class="accountPic"/>
+			</div>
+			<div class="grid_10">
+				<h2 class="accountName">{{ account.first_name }} {{ account.last_name }}</h2>
+				<ul class="mainInfo">
+					<li>
+						<div class="label">Division:</div>{{company.name}} - {{department.name}}, {{account.job_description}}
+					</li>
+					<li>
+						<div class="label">Desk:</div> {{desk.acronym}}
+					</li>
+					<li>
+						<div class="label">Ext.:</div> {{telWFP.extension}} ({{telWFP.numberComplete}})
+					</li>
+				</ul>
+				<h3>Other Information</h3>
+				<div class="infoAccount">
+					<div class="row">
+						<div class="grid_1">
+							 <div class="group phone"><span aria-hidden="true" class="icon-phone"></span></div>		
+						</div>
+						<div class="grid_9">
+							<ul class="basicInfo">
+							{%for telephone in telephones%}
+								<li>
+								
+									<div class="label">{{telephone.telephoneNumberType.name}}:</div>{{telephone.numberComplete}}
+								
+								</li>
+								{%endfor%}
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="grid_1">
+							 <div class="group mobile"><span aria-hidden="true" class="icon-mobile"></span></div>		
+						</div>
+						<div class="grid_9">
+							<ul class="basicInfo">
+							{%for mobile in mobiles%}
+								<li>
+									<div class="label">{{mobile.telephoneNumberType.name}}:</div>{{mobile.numberComplete}}
+								</li>
+							{%endfor%}
+							</ul>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="grid_1">
+							 <div class="group mail"><span aria-hidden="true" class="icon-mail"></span></div>		
+						</div>
+						<div class="grid_9">
+							<ul class="basicInfo">
+							{%for email in emails%}
+								<li>
+									<div class="label">{{email.emailType.name}}:</div>{{email.email}}
+								</li>
+							{%endfor%}
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="grid_1">
+							 <div class="group social"><span aria-hidden="true" class="icon-social"></span></div>		
+						</div>
+						<div class="grid_9">
+							<ul class="basicInfo">
+							{%for social in account.socials.all%}
+								<li>
+									<div class="label">{{social.socialNetworkType.name}}:</div>{{social.username}}
+								</li>
+							{%endfor%}
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="grid_1">
+							 <div class="group web"><span aria-hidden="true" class="icon-webAlt"></span></div>		
+						</div>
+						<div class="grid_9">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+{% else %}
+    <p>This account doesn't exist.</p>
+{% endif %}
+
+{% endblock %}
+
